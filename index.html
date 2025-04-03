@@ -1,64 +1,63 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Казино Бонуси</title>
+    <title>Прелендинг Казино</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+            margin: 0;
+            padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            background: url('https://source.unsplash.com/1600x900/?casino') no-repeat center center/cover;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            position: relative;
             text-align: center;
+            z-index: 1;
         }
-        .title {
-            font-size: 32px;
+        .btn {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 20px;
             font-weight: bold;
-            margin-bottom: 20px;
-            color: #ff8c00;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
-        }
-        .emoji {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 20px 40px;
-            font-size: 24px;
-            color: #fff;
-            background: linear-gradient(45deg, #ff0000, #ff8c00, #ff0000);
+            color: white;
+            background: linear-gradient(45deg, #ff0000, #ff8c00);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(255, 140, 0, 0.6);
+            transition: 0.3s;
         }
-        .button:hover {
+        .btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 140, 0, 1);
-        }
-        .button::before {
-            content: '\1F381'; /* Emoji: 🎁 */
-            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="title">Отримай Безкоштовні Спіни</div>
-    <div class="emoji">👇👇👇</div>
+    <div class="overlay"></div>
     <div class="container">
-        <a href="https://gguapromo.com/l/67901e2cac16b0e9740042d7?sub_id=%7Bvitbonv_KAZIK%7D" class="button" target="_blank">GG BET 275 FS</a>
-        <br>
-        <a href="https://go.scityweb.com/click?pid=786&offer_id=38&sub2=vitbonv_KAZIK" class="button" target="_blank">Slot City 250 FS</a>
+        <a href="https://go.scityweb.com/click?pid=786&offer_id=38&sub2=vitbonv_KAZIK" class="btn">БОНУС 225 FC</a>
+        <a href="https://gguapromo.com/l/67901e2cac16b0e9740042d7?sub_id=%7Bvitbonv_KAZIK%7D" class="btn">БОНУС 600 FS🎁</a>
+        <a href="https://l29.caslworld.com/" class="btn">ВАШ ВИЙГРАШ 300 FS🎁</a>
     </div>
 </body>
 </html>
+
 
