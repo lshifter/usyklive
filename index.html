@@ -1,64 +1,33 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ліквідація складу | Кросівки за 200 грн</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- TikTok Pixel Code Start -->
-  <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-    var e=ttq._i[t]=[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-    ttq.load('D08V4DBC77U4U448U220');
-    ttq.page();
-  }(window, document, 'ttq');
-  </script>
-  <!-- TikTok Pixel Code End -->
-
+  <title>Ліквідація складу</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Rubik', sans-serif;
-      background: url('https://images.unsplash.com/photo-1616627561267-e55bd4d1fa62?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(160deg, #000000, #1a1a1a);
+      color: white;
       text-align: center;
-    }
-
-    .overlay {
-      background: rgba(0,0,0,0.7);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 50px 20px;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      padding: 60px 20px;
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 38px;
+      font-weight: bold;
       color: #ffe600;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.4em;
-      margin-bottom: 20px;
+    .sub {
+      font-size: 20px;
+      margin-bottom: 15px;
       max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .highlight {
@@ -67,49 +36,90 @@
     }
 
     .timer-box {
-      background-color: rgba(255, 255, 255, 0.1);
+      margin-top: 30px;
+      font-size: 22px;
       border: 2px dashed #ffe600;
       padding: 20px;
-      border-radius: 12px;
-      margin: 30px 0;
-      font-size: 1.5em;
+      border-radius: 10px;
+      display: inline-block;
+      background-color: rgba(255,255,255,0.05);
     }
 
-    .button {
-      background: linear-gradient(135deg, #00c3ff, #0062ff);
+    .tg-button {
+      margin-top: 30px;
+      padding: 18px 48px;
+      background: linear-gradient(90deg, #ff0080, #7928ca, #2afadf);
+      background-size: 300% 300%;
       color: white;
-      padding: 16px 40px;
-      font-size: 1.3em;
-      border: none;
-      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
       text-decoration: none;
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.6);
+      transition: all 0.4s ease;
+      animation: glow 6s ease infinite;
+      display: inline-block;
     }
 
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0,195,255,0.6);
+    .tg-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.9);
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      p, .timer-box { font-size: 1.1em; }
+    @keyframes glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
+
+  <!-- TikTok Pixel Code Start -->
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = w[t] = w[t] || [];
+      ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"];
+      ttq.setAndDefer = function (t, e) {
+        t[e] = function () {
+          t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+        }
+      };
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function (t) {
+        for (var e = ttq._i[t] = [], n = 0; n < ttq.methods.length; n++)
+          ttq.setAndDefer(e, ttq.methods[n]);
+        return e
+      };
+      ttq.load = function (e, n) {
+        var r = "https://analytics.tiktok.com/i18n/pixel/events.js",
+          o = n && n.partner;
+        ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = r, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {};
+        n = document.createElement("script")
+        ; n.type = "text/javascript", n.async = !0, n.src = r + "?sdkid=" + e + "&lib=" + t;
+        e = document.getElementsByTagName("script")[0];
+        e.parentNode.insertBefore(n, e)
+      };
+
+      ttq.load('D095VFBC77U9AMELPOQ0');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
 </head>
+
 <body>
-  <div class="overlay">
-    <h1>🔻 ЛІКВІДАЦІЯ СКЛАДУ 🔻</h1>
-    <p>Усі <span class="highlight">кросівки за 200 грн</span> тільки сьогодні!</p>
-    <p>🎁 Також отримай <span class="highlight">сертифікат на 500 грн</span> — тільки для підписників нашого закритого Telegram-каналу!</p>
+  <h1>ЛІКВІДАЦІЯ СКЛАДУ</h1>
+  <div class="sub">Всі <span class="highlight">кросівки по 200 грн</span> — тільки сьогодні!</div>
+  <div class="sub">Отримай <span class="highlight">сертифікат на 500 грн</span> у нашому закритому Telegram-каналі</div>
 
-    <div class="timer-box">
-      ⏳ До завершення акції залишилось:<br>
-      <div id="timer">Завантаження таймера...</div>
-    </div>
+  <div class="timer-box">
+    До завершення акції залишилось:<br>
+    <span id="timer">00:00:00</span>
+  </div>
 
-    <a class="button" href="https://t.me/+qdrqHXnK-xhhMWMy" target="_blank">
-      🔐 Увійти в закритий Telegram-канал
+  <div>
+    <a class="tg-button" href="https://t.me/+qdrqHXnK-xhhMWMy" target="_blank">
+      🔥 Перейти до Telegram та забрати сертифікат
     </a>
   </div>
 
@@ -129,7 +139,7 @@
         const distance = deadline - now;
 
         if (distance < 0) {
-          document.getElementById("timer").innerHTML = "⛔ Час вийшов!";
+          document.getElementById("timer").innerHTML = "Акція завершена";
           return;
         }
 
@@ -149,7 +159,9 @@
     startCountdown();
   </script>
 </body>
+
 </html>
+
 
 
 
