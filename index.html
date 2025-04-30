@@ -1,106 +1,114 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ликвидация склада | Кроссовки за 200 грн</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ліквідація складу | Кросівки за 200 грн</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: url('https://images.unsplash.com/photo-1600185365972-bdba7fddf098?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: url('https://images.unsplash.com/photo-1616627561267-e55bd4d1fa62?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
       background-size: cover;
-      color: white;
+      color: #fff;
       text-align: center;
     }
 
     .overlay {
       background: rgba(0,0,0,0.7);
-      padding: 60px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
       font-size: 3em;
+      color: #ffe600;
       margin-bottom: 20px;
-      color: #ffcc00;
-    }
-
-    .highlight {
-      color: #00ffae;
     }
 
     p {
-      font-size: 1.3em;
+      font-size: 1.4em;
       margin-bottom: 20px;
+      max-width: 600px;
     }
 
-    .timer {
-      font-size: 2em;
+    .highlight {
+      color: #00ffc3;
+      font-weight: bold;
+    }
+
+    .timer-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px dashed #ffe600;
+      padding: 20px;
+      border-radius: 12px;
       margin: 30px 0;
-      color: #ff5555;
+      font-size: 1.5em;
     }
 
     .button {
-      display: inline-block;
-      background-color: #0088cc;
+      background: linear-gradient(135deg, #00c3ff, #0062ff);
       color: white;
-      padding: 18px 35px;
-      font-size: 1.2em;
-      border-radius: 10px;
+      padding: 16px 40px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 12px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .button:hover {
-      background-color: #006fa3;
-    }
-
-    .certificate {
-      background-color: rgba(255,255,255,0.1);
-      border: 2px dashed #ffcc00;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,195,255,0.6);
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-      .timer {
-        font-size: 1.5em;
-      }
+      h1 { font-size: 2em; }
+      p, .timer-box { font-size: 1.1em; }
     }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <h1>🔥 Ликвидация склада!</h1>
-    <p>Только <span class="highlight">сегодня</span>: все <strong>кроссовки по 200 грн</strong>!</p>
-    <p>Плюс — <strong>сертификат на 500 грн</strong> для подписчиков закрытого канала</p>
+    <h1>🔻 ЛІКВІДАЦІЯ СКЛАДУ 🔻</h1>
+    <p>Усі <span class="highlight">кросівки за 200 грн</span> тільки сьогодні!</p>
+    <p>🎁 Також отримай <span class="highlight">сертифікат на 500 грн</span> — тільки для підписників нашого закритого Telegram-каналу!</p>
 
-    <div class="certificate">
-      🎁 <strong>Сертификат доступен только в течение 24 часов!</strong>
-      <div class="timer" id="timer">Загрузка таймера...</div>
+    <div class="timer-box">
+      ⏳ До завершення акції залишилось:<br>
+      <div id="timer">Завантаження таймера...</div>
     </div>
 
-    <a href="https://t.me/+PQA979FhUzQ3NWIy" target="_blank" class="button">Перейти в Telegram и забрать бонус</a>
+    <a class="button" href="https://t.me/+PQA979FhUzQ3NWIy" target="_blank">
+      🔐 Увійти в закритий Telegram-канал
+    </a>
   </div>
 
   <script>
     function startCountdown() {
-      // Генерация случайной продолжительности (до 24 часов)
-      const countdownTime = 24 * 60 * 60 * 1000; // 24 часа
+      const fullTime = 24 * 60 * 60 * 1000; // 24 години
       const now = new Date().getTime();
-      let deadline = localStorage.getItem('countdownDeadline');
+      let deadline = localStorage.getItem('countdownDeadlineUA');
 
       if (!deadline) {
-        deadline = now + countdownTime;
-        localStorage.setItem('countdownDeadline', deadline);
+        deadline = now + fullTime;
+        localStorage.setItem('countdownDeadlineUA', deadline);
       }
 
       function updateTimer() {
@@ -108,16 +116,16 @@
         const distance = deadline - now;
 
         if (distance < 0) {
-          document.getElementById("timer").innerHTML = "⏰ Время вышло!";
+          document.getElementById("timer").innerHTML = "⛔ Час вийшов!";
           return;
         }
 
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+        const seconds = Math.floor((distance / 1000) % 60);
 
-        document.getElementById("timer").innerHTML = 
-          `⏳ Осталось: ${hours}ч ${minutes}м ${seconds}с`;
+        document.getElementById("timer").innerHTML =
+          `${hours} год : ${minutes} хв : ${seconds} сек`;
 
         setTimeout(updateTimer, 1000);
       }
