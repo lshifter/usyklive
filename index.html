@@ -3,58 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Товарка | Присоединяйся к Telegram-каналу</title>
+  <title>Ликвидация склада | Кроссовки за 200 грн</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1600185365972-bdba7fddf098?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
       text-align: center;
     }
-    .container {
-      max-width: 500px;
-      padding: 40px;
-      background-color: #2c2c2c;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+    .overlay {
+      background: rgba(0,0,0,0.7);
+      padding: 60px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
     h1 {
-      font-size: 2em;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .highlight {
+      color: #00ffae;
+    }
+
+    p {
+      font-size: 1.3em;
       margin-bottom: 20px;
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+
+    .timer {
+      font-size: 2em;
+      margin: 30px 0;
+      color: #ff5555;
     }
-    a.button {
+
+    .button {
       display: inline-block;
-      padding: 15px 30px;
       background-color: #0088cc;
       color: white;
+      padding: 18px 35px;
+      font-size: 1.2em;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 1.1em;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
-    a.button:hover {
+
+    .button:hover {
       background-color: #006fa3;
+    }
+
+    .certificate {
+      background-color: rgba(255,255,255,0.1);
+      border: 2px dashed #ffcc00;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .timer {
+        font-size: 1.5em;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Зарабатывай на товарке</h1>
-    <p>Лучшие кейсы, поставщики, схемы — всё в одном Telegram-канале.</p>
-    <a class="button" href="https://t.me/+PQA979FhUzQ3NWIy" target="_blank">Вступить в канал</a>
+  <div class="overlay">
+    <h1>🔥 Ликвидация склада!</h1>
+    <p>Только <span class="highlight">сегодня</span>: все <strong>кроссовки по 200 грн</strong>!</p>
+    <p>Плюс — <strong>сертификат на 500 грн</strong> для подписчиков закрытого канала</p>
+
+    <div class="certificate">
+      🎁 <strong>Сертификат доступен только в течение 24 часов!</strong>
+      <div class="timer" id="timer">Загрузка таймера...</div>
+    </div>
+
+    <a href="https://t.me/+PQA979FhUzQ3NWIy" target="_blank" class="button">Перейти в Telegram и забрать бонус</a>
   </div>
+
+  <script>
+    function startCountdown() {
+      // Генерация случайной продолжительности (до 24 часов)
+      const countdownTime = 24 * 60 * 60 * 1000; // 24 часа
+      const now = new Date().getTime();
+      let deadline = localStorage.getItem('countdownDeadline');
+
+      if (!deadline) {
+        deadline = now + countdownTime;
+        localStorage.setItem('countdownDeadline', deadline);
+      }
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = deadline - now;
+
+        if (distance < 0) {
+          document.getElementById("timer").innerHTML = "⏰ Время вышло!";
+          return;
+        }
+
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = 
+          `⏳ Осталось: ${hours}ч ${minutes}м ${seconds}с`;
+
+        setTimeout(updateTimer, 1000);
+      }
+
+      updateTimer();
+    }
+
+    startCountdown();
+  </script>
 </body>
 </html>
+
 
 
 
