@@ -3,227 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 15 - Відчуй майбутнє в своїх руках</title>
+    <title>🚀 iPhone 15 - Відчуй майбутнє!</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #a8dadc, #457b9d); /* Градієнтний фон */
+            color: #fff;
+            line-height: 1.7;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out; /* Анімація появи */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .hero {
-            background-color: #fff;
-            padding: 80px 20px;
-            text-align: center;
+            padding: 100px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон для контрасту */
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 20px;
-            color: #1d1d1f;
+            color: #f1faee;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Тінь для тексту */
         }
 
         .hero p {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .hero img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 30px;
+            font-size: 1.4em;
+            color: #f1faee;
+            margin-bottom: 40px;
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 18px 35px;
             text-decoration: none;
-            background-color: #007bff;
+            background-color: #e63946;
             color: white;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-size: 1.2em;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Тінь для кнопки */
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            transform: scale(1.05); /* Ефект збільшення при наведенні */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         .features {
-            padding: 40px 20px;
-            background-color: #eee;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Напівпрозорий білий фон */
             text-align: center;
         }
 
         .features h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 30px;
-            color: #1d1d1f;
+            color: #f1faee;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .feature-item {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            animation: slideUp 0.5s ease-out forwards; /* Анімація появи елементів */
+            opacity: 0;
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.2s; }
+        .feature-item:nth-child(2) { animation-delay: 0.4s; }
+        .feature-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .feature-item h3 {
-            font-size: 1.5em;
-            color: #1d1d1f;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            color: #f1faee;
+            margin-bottom: 15px;
         }
 
         .feature-item p {
-            color: #666;
+            color: #ddd;
+            font-size: 1.1em;
         }
 
         .models {
-            padding: 40px 20px;
-            background-color: #fff;
+            padding: 60px 20px;
+            background-color: rgba(0, 0, 0, 0.3); /* Ще один напівпрозорий фон */
             text-align: center;
         }
 
         .models h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 30px;
-            color: #1d1d1f;
+            color: #f1faee;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .model-item {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            animation: zoomIn 0.5s ease-out forwards; /* Анімація масштабування */
+            opacity: 0;
         }
 
-        .model-item img {
-            max-width: 80%;
-            height: auto;
-            margin-bottom: 20px;
+        .model-item:nth-child(1) { animation-delay: 0.2s; }
+        .model-item:nth-child(2) { animation-delay: 0.4s; }
+        .model-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .model-item h3 {
-            font-size: 1.3em;
-            color: #1d1d1f;
-            margin-bottom: 10px;
+            font-size: 1.6em;
+            color: #f1faee;
+            margin-bottom: 15px;
+        }
+
+        .model-item p {
+            color: #ddd;
+            font-size: 1.1em;
+            margin-bottom: 20px;
         }
 
         .why-us {
-            padding: 40px 20px;
-            background-color: #eee;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
         .why-us h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 30px;
-            color: #1d1d1f;
+            color: #f1faee;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .why-us-item {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            animation: slideInLeft 0.5s ease-out forwards; /* Анімація зліва */
+            opacity: 0;
+        }
+
+        .why-us-item:nth-child(1) { animation-delay: 0.2s; }
+        .why-us-item:nth-child(2) { animation-delay: 0.4s; }
+        .why-us-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         .why-us-item h3 {
-            font-size: 1.5em;
-            color: #1d1d1f;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            color: #f1faee;
+            margin-bottom: 15px;
         }
 
         .why-us-item p {
-            color: #666;
+            color: #ddd;
+            font-size: 1.1em;
         }
 
         .cta {
-            background-color: #fff;
-            padding: 60px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 80px 20px;
             text-align: center;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 700px;
         }
 
         .cta h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #1d1d1f;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: #f1faee;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .footer {
             background-color: #333;
-            color: white;
+            color: #ddd;
             text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
+            padding: 25px;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>iPhone 15: Відчуй майбутнє в своїх руках</h1>
-        <p>Потужний процесор A16 Bionic, покращена камера, елегантний дизайн.</p>
-        <img src="iphone-15-hero.jpg" alt="iPhone 15">
-        <a href="#models" class="btn">Переглянути моделі</a>
+        <h1>📱 iPhone 15: Відкрий нову реальність! ✨</h1>
+        <p>Потужність, стиль та інновації в кожному дотику. 🚀</p>
+        <a href="#models" class="btn">Дивитись моделі <span aria-hidden="true">➡️</span></a>
     </div>
 
     <div class="features">
-        <h2>Чому обирають iPhone 15?</h2>
+        <h2>🔥 Чому iPhone 15 - це твій вибір? 🔥</h2>
         <div class="feature-item">
-            <h3>Продуктивність</h3>
-            <p>Надшвидкий чип A16 Bionic забезпечує миттєву реакцію та плавну роботу будь-яких завдань.</p>
+            <h3>⚡ Швидкість</h3>
+            <p>Супер-швидкий процесор для миттєвої роботи. 💨</p>
         </div>
         <div class="feature-item">
-            <h3>Камера</h3>
-            <p>Робіть неймовірні фото та відео завдяки покращеній системі камер.</p>
+            <h3>📸 Камера</h3>
+            <p>Професійні фото та відео без зусиль. 🌟</p>
         </div>
         <div class="feature-item">
-            <h3>Дизайн</h3>
-            <p>Вишуканий та міцний корпус, приємний на дотик.</p>
+            <h3>💎 Дизайн</h3>
+            <p>Елегантний вигляд, який завжди в тренді. 😎</p>
         </div>
     </div>
 
     <div class="models" id="models">
-        <h2>Наші моделі iPhone 15</h2>
+        <h2>📱 Обирай свій ідеальний iPhone 15! 📱</h2>
         <div class="model-item">
-            <img src="iphone-15-pro-max.jpg" alt="iPhone 15 Pro Max">
-            <h3>iPhone 15 Pro Max</h3>
-            <p>Максимальна продуктивність та можливості.</p>
-            <a href="#" class="btn">Детальніше</a>
+            <h3>Pro Max 🚀</h3>
+            <p>Для тих, хто прагне максимуму. 💪</p>
+            <a href="#" class="btn">Детальніше <span aria-hidden="true">🔍</span></a>
         </div>
         <div class="model-item">
-            <img src="iphone-15-pro.jpg" alt="iPhone 15 Pro">
-            <h3>iPhone 15 Pro</h3>
-            <p>Професійні функції у компактному корпусі.</p>
-            <a href="#" class="btn">Детальніше</a>
+            <h3>Pro 🌟</h3>
+            <p>Баланс між потужністю та компактністю. 👌</p>
+            <a href="#" class="btn">Детальніше <span aria-hidden="true">🔍</span></a>
         </div>
         <div class="model-item">
-            <img src="iphone-15.jpg" alt="iPhone 15">
-            <h3>iPhone 15</h3>
-            <p>Новий рівень можливостей для кожного.</p>
-            <a href="#" class="btn">Детальніше</a>
+            <h3>Базова модель 🌈</h3>
+            <p>Новий рівень можливостей для кожного. 👍</p>
+            <a href="#" class="btn">Детальніше <span aria-hidden="true">🔍</span></a>
         </div>
     </div>
 
     <div class="why-us">
-        <h2>Чому купувати у нас?</h2>
+        <h2>🏆 Чому купують саме у нас? 🏆</h2>
         <div class="why-us-item">
-            <h3>Офіційна гарантія</h3>
-            <p>Всі iPhone мають офіційну гарантію від Apple.</p>
+            <h3>🛡️ Гарантія</h3>
+            <p>Офіційна підтримка та впевненість у якості. ✅</p>
         </div>
         <div class="why-us-item">
-            <h3>Швидка доставка</h3>
-            <p>Доставляємо по всій Україні в найкоротші терміни.</p>
+            <h3>🚚 Доставка</h3>
+            <p>Швидко та надійно прямо до вашої двері. 📦</p>
         </div>
         <div class="why-us-item">
-            <h3>Вигідні ціни</h3>
-            <p>Пропонуємо конкурентні ціни та акційні пропозиції.</p>
+            <h3>💰 Ціни</h3>
+            <p>Вигідні пропозиції, які вас приємно здивують. 🤑</p>
         </div>
     </div>
 
     <div class="cta">
-        <h2>Готові до оновлення?</h2>
-        <p>Оберіть свій ідеальний iPhone 15 вже сьогодні!</p>
-        <a href="#models" class="btn">Перейти до каталогу</a>
+        <h2>🔥 Не пропусти свій новий iPhone 15! 🔥</h2>
+        <p>Зроби крок у майбутнє вже сьогодні! ➡️</p>
+        <a href="#models" class="btn">Перейти до каталогу <span aria-hidden="true">🛒</span></a>
     </div>
 
     <div class="footer">
-        <p>© 2025 Магазин iPhone. Всі права захищено.</p>
+        <p>© 2025 Магазин майбутніх гаджетів. Всі права під захистом. 🚀</p>
     </div>
 </body>
 </html>
