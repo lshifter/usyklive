@@ -2,8 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 iPhone від 33 грн + Знижка 50% в Telegram! 🔥</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.33"> <title>🔥 iPhone від 500 грн! Знижка 50% в Telegram! 🔥</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,281 +21,53 @@
         }
 
         .hero {
-            padding: 100px 20px;
+            padding: 33px 7px; /* Зменшено в 3 рази */
             background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            margin: 40px auto;
-            max-width: 800px;
+            border-radius: 3px; /* Зменшено в 3 рази */
+            margin: 13px auto; /* Зменшено в 3 рази */
+            max-width: 267px; /* Зменшено в 3 рази */
         }
 
         .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 1em; /* Зменшено в 3 рази */
+            margin-bottom: 7px; /* Зменшено в 3 рази */
             color: #f1faee;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0.67px 0.67px 1.33px rgba(0, 0, 0, 0.3); /* Зменшено тінь */
         }
 
         .hero p {
-            font-size: 1.4em;
+            font-size: 0.47em; /* Зменшено в 3 рази */
             color: #f1faee;
-            margin-bottom: 40px;
+            margin-bottom: 13px; /* Зменшено в 3 рази */
         }
 
         .telegram-link {
             display: inline-block;
-            padding: 18px 35px;
+            padding: 6px 12px; /* Зменшено в 3 рази */
             text-decoration: none;
             background-color: #229ED9; /* Колір Telegram */
             color: white;
-            border-radius: 8px;
+            border-radius: 3px; /* Зменшено в 3 рази */
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 0.4em; /* Зменшено в 3 рази */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1.67px 5px rgba(0, 0, 0, 0.3); /* Зменшено тінь */
         }
 
         .telegram-link:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .features {
-            padding: 60px 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #f1faee;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-item {
-            margin-bottom: 40px;
-            animation: slideUp 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .feature-item:nth-child(1) { animation-delay: 0.2s; }
-        .feature-item:nth-child(2) { animation-delay: 0.4s; }
-        .feature-item:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .feature-item h3 {
-            font-size: 1.8em;
-            color: #f1faee;
-            margin-bottom: 15px;
-        }
-
-        .feature-item p {
-            color: #ddd;
-            font-size: 1.1em;
-        }
-
-        .models {
-            padding: 60px 20px;
-            background-color: rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        .models h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #f1faee;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .model-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Два ряди */
-            gap: 30px;
-            margin-top: 30px;
-            padding: 0 20px;
-        }
-
-        .model-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 8px;
-            animation: zoomIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .model-item:nth-child(1) { animation-delay: 0.2s; }
-        .model-item:nth-child(2) { animation-delay: 0.4s; }
-        .model-item:nth-child(3) { animation-delay: 0.6s; }
-        .model-item:nth-child(4) { animation-delay: 0.8s; }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .model-item h3 {
-            font-size: 1.6em;
-            color: #f1faee;
-            margin-bottom: 15px;
-        }
-
-        .model-item p {
-            color: #ddd;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-
-        .model-item .price {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #e63946;
-        }
-
-        .why-us {
-            padding: 60px 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .why-us h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #f1faee;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .why-us-item {
-            margin-bottom: 40px;
-            animation: slideInLeft 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .why-us-item:nth-child(1) { animation-delay: 0.2s; }
-        .why-us-item:nth-child(2) { animation-delay: 0.4s; }
-        .why-us-item:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes slideInLeft {
-            from { transform: translateX(-30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .why-us-item h3 {
-            font-size: 1.8em;
-            color: #f1faee;
-            margin-bottom: 15px;
-        }
-
-        .why-us-item p {
-            color: #ddd;
-            font-size: 1.1em;
-        }
-
-        .cta {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 80px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin: 40px auto;
-            max-width: 700px;
-        }
-
-        .cta h2 {
-            font-size: 2.8em;
-            margin-bottom: 30px;
-            color: #f1faee;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .footer {
-            background-color: #333;
-            color: #ddd;
-            text-align: center;
-            padding: 25px;
-            font-size: 1em;
+            box-shadow: 0 2.67px 6.67px rgba(0, 0, 0, 0.4); /* Зменшено тінь */
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>🔥 iPhone від 33 грн! Твоя знижка 50% чекає в Telegram! 🔥</h1>
-        <p>Мрієш про новий iPhone? Приєднуйся до нашого Telegram-каналу прямо зараз та отримай неймовірну <span style="color: yellow; font-weight: bold;">знижку 50%</span> на будь-яку модель при першій покупці!</p>
-        <a href="https://t.me/+qdrqHXnK-xhhMWMy" class="telegram-link" target="_blank">Забрати знижку в Telegram <span aria-hidden="true">➡️</span></a>
-    </div>
-
-    <div class="features">
-        <h2>Чому обирають iPhone?</h2>
-        <div class="feature-item">
-            <h3>🚀 Технології</h3>
-            <p>Інноваційні рішення, що надихають. ✨</p>
-        </div>
-        <div class="feature-item">
-            <h3>📸 Фото</h3>
-            <p>Виняткова якість кожної світлини. 🌟</p>
-        </div>
-        <div class="feature-item">
-            <h3>💎 Стиль</h3>
-            <p>Неповтоний дизайн, що виражає тебе. 😎</p>
-        </div>
-    </div>
-
-    <div class="models" id="models">
-        <h2>Наші основні моделі iPhone</h2>
-        <div class="model-grid">
-            <div class="model-item">
-                <h3>iPhone 15 Pro Max</h3>
-                <p class="price">від 3066 грн</p>
-                <p>Максимальна продуктивність.</p>
-            </div>
-            <div class="model-item">
-                <h3>iPhone 15 Pro</h3>
-                <p class="price">від 2666 грн</p>
-                <p>Професійні функції.</p>
-            </div>
-            <div class="model-item">
-                <h3>iPhone 15</h3>
-                <p class="price">від 2199 грн</p>
-                <p>Новий рівень можливостей.</p>
-            </div>
-            <div class="model-item">
-                <h3>iPhone 14</h3>
-                <p class="price">від 1866 грн</p>
-                <p>Перевірена часом якість.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="why-us">
-        <h2>Чому купувати у нас вигідно?</h2>
-        <div class="why-us-item">
-            <h3>💯 Оригінал</h3>
-            <p>Гарантована оригінальність кожного iPhone.</p>
-        </div>
-        <div class="why-us-item">
-            <h3>🚚 Швидкість</h3>
-            <p>Оперативна доставка по всій країні.</p>
-        </div>
-        <div class="why-us-item">
-            <h3>🎁 Бонуси</h3>
-            <p>Спеціальні пропозиції для наших підписників у Telegram.</p>
-        </div>
-    </div>
-
-    <div class="cta">
-        <h2>🔥 Твоя знижка 50% вже чекає на тебе! 🔥</h2>
-        <p>Приєднуйся до Telegram-каналу та отримай свій персональний бонус на покупку iPhone! 🚀</p>
-        <a href="https://t.me/+qdrqHXnK-xhhMWMy" class="telegram-link" target="_blank">Приєднатися до Telegram <span aria-hidden="true">📲</span></a>
-    </div>
-
-    <div class="footer">
-        <p>© 2025 Твій найкращий магазин iPhone. Всі права захищено. 👍</p>
+        <h1>🔥 iPhone від 500 грн! Знижка 50% в Telegram! 🔥</h1>
+        <p>Шукаєш новий iPhone за вигідною ціною? Приєднуйся до нашого Telegram-каналу та отримай <span style="color: yellow; font-weight: bold;">знижку 50%</span> на першу покупку будь-якої моделі!</p>
+        <a href="https://t.me/+qdrqHXnK-xhhMWMy" class="telegram-link" target="_blank">Перейти в Telegram та забрати знижку <span aria-hidden="true">➡️</span></a>
     </div>
 </body>
 </html>
-
 
 
 
