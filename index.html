@@ -1,124 +1,231 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ліквідація складу - Отримай сертифікат</title>
+    <title>iPhone 15 - Відчуй майбутнє в своїх руках</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: radial-gradient(circle, #0a0a0a, #000000);
-            color: white;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background-color: #fff;
+            padding: 80px 20px;
             text-align: center;
         }
 
-        h1 {
-            color: yellow;
-            font-size: 3em;
-            margin-top: 50px;
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1d1d1f;
         }
 
-        .highlight-green {
-            color: #00ffaa;
-            font-weight: bold;
-        }
-
-        .countdown-box {
-            border: 2px dashed yellow;
-            display: inline-block;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 1.5em;
-            border-radius: 10px;
-        }
-
-        .telegram-button {
-            margin-top: 40px;
-            padding: 20px 40px;
+        .hero p {
             font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
             font-weight: bold;
-            color: #fff;
-            background: linear-gradient(90deg, #c402fe, #3b8dff);
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .telegram-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(255, 0, 255, 0.9);
+        .btn:hover {
+            background-color: #0056b3;
         }
 
-        .button-wrapper {
-            display: flex;
-            justify-content: center;
+        .features {
+            padding: 40px 20px;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+        }
+
+        .feature-item {
+            margin-bottom: 30px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5em;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #666;
+        }
+
+        .models {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .models h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+        }
+
+        .model-item {
+            margin-bottom: 40px;
+        }
+
+        .model-item img {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .model-item h3 {
+            font-size: 1.3em;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .why-us {
+            padding: 40px 20px;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        .why-us h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+        }
+
+        .why-us-item {
+            margin-bottom: 30px;
+        }
+
+        .why-us-item h3 {
+            font-size: 1.5em;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .why-us-item p {
+            color: #666;
+        }
+
+        .cta {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
         }
     </style>
-
-    <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]=[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s)};
-      ttq.load('D096EO3C77U7AMTKC02G');
-      ttq.page();
-    }(window, document, 'ttq');
-    </script>
-    <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]=[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s)};
-      ttq.load('D095VFBC77U9AMELPOQ0');
-      ttq.page();
-    }(window, document, 'ttq');
-    </script>
 </head>
-
 <body>
-    <h1>ЛІКВІДАЦІЯ СКЛАДУ</h1>
-    <p>Всі <span class="highlight-green">кросівки по 200 грн</span> — тільки сьогодні!</p>
-    <p>Отримай <span class="highlight-green">сертифікат на 500 грн</span> у нашому закритому Telegram-каналі</p>
-
-    <div class="countdown-box" id="countdown"></div>
-
-    <div class="button-wrapper">
-        <a href="https://t.me/+qdrqHXnK-xhhMWMy" class="telegram-button">Перейти до Telegram та забрати сертифікат</a>
+    <div class="hero">
+        <h1>iPhone 15: Відчуй майбутнє в своїх руках</h1>
+        <p>Потужний процесор A16 Bionic, покращена камера, елегантний дизайн.</p>
+        <img src="iphone-15-hero.jpg" alt="iPhone 15">
+        <a href="#models" class="btn">Переглянути моделі</a>
     </div>
 
-    <script>
-        function startCountdown(durationHours) {
-            let countdownElement = document.getElementById('countdown');
-            let endTime = new Date().getTime() + (durationHours * 60 * 60 * 1000);
+    <div class="features">
+        <h2>Чому обирають iPhone 15?</h2>
+        <div class="feature-item">
+            <h3>Продуктивність</h3>
+            <p>Надшвидкий чип A16 Bionic забезпечує миттєву реакцію та плавну роботу будь-яких завдань.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Камера</h3>
+            <p>Робіть неймовірні фото та відео завдяки покращеній системі камер.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Дизайн</h3>
+            <p>Вишуканий та міцний корпус, приємний на дотик.</p>
+        </div>
+    </div>
 
-            function updateCountdown() {
-                let now = new Date().getTime();
-                let distance = endTime - now;
+    <div class="models" id="models">
+        <h2>Наші моделі iPhone 15</h2>
+        <div class="model-item">
+            <img src="iphone-15-pro-max.jpg" alt="iPhone 15 Pro Max">
+            <h3>iPhone 15 Pro Max</h3>
+            <p>Максимальна продуктивність та можливості.</p>
+            <a href="#" class="btn">Детальніше</a>
+        </div>
+        <div class="model-item">
+            <img src="iphone-15-pro.jpg" alt="iPhone 15 Pro">
+            <h3>iPhone 15 Pro</h3>
+            <p>Професійні функції у компактному корпусі.</p>
+            <a href="#" class="btn">Детальніше</a>
+        </div>
+        <div class="model-item">
+            <img src="iphone-15.jpg" alt="iPhone 15">
+            <h3>iPhone 15</h3>
+            <p>Новий рівень можливостей для кожного.</p>
+            <a href="#" class="btn">Детальніше</a>
+        </div>
+    </div>
 
-                if (distance < 0) {
-                    countdownElement.innerHTML = "Акцію завершено";
-                    return;
-                }
+    <div class="why-us">
+        <h2>Чому купувати у нас?</h2>
+        <div class="why-us-item">
+            <h3>Офіційна гарантія</h3>
+            <p>Всі iPhone мають офіційну гарантію від Apple.</p>
+        </div>
+        <div class="why-us-item">
+            <h3>Швидка доставка</h3>
+            <p>Доставляємо по всій Україні в найкоротші терміни.</p>
+        </div>
+        <div class="why-us-item">
+            <h3>Вигідні ціни</h3>
+            <p>Пропонуємо конкурентні ціни та акційні пропозиції.</p>
+        </div>
+    </div>
 
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <div class="cta">
+        <h2>Готові до оновлення?</h2>
+        <p>Оберіть свій ідеальний iPhone 15 вже сьогодні!</p>
+        <a href="#models" class="btn">Перейти до каталогу</a>
+    </div>
 
-                countdownElement.innerHTML = `До завершення акції залишилось:<br>${hours} год : ${minutes} хв : ${seconds} сек`;
-            }
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        }
-
-        // Стартуємо з випадковим часом до 24 годин
-        let randomHours = Math.floor(Math.random() * 24) + 1;
-        startCountdown(randomHours);
-    </script>
+    <div class="footer">
+        <p>© 2025 Магазин iPhone. Всі права захищено.</p>
+    </div>
 </body>
-
 </html>
 
 
