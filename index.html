@@ -97,38 +97,16 @@
     </div>
     <!-- Note under video -->
     <p class="note">для отримання доступу натисніть «▶️»</p>
-    <!-- Subscription Modal -->
+        <!-- Subscription Modal -->
     <div class="modal-bg" id="modal">
       <div class="modal">
         <span class="close-btn" id="closeModal">✖</span>
-        <h2>Підпишіться на спонсорів</h2>
-        <a href="https://t.me/+2J-O2KB3MJo3NTIy" target="_blank">🔗 Sponsor Channel 1</a>
-        <a href="https://t.me/+fsdeakkDz_lhNTA6" target="_blank">🔗 Sponsor Channel 2</a>
-        <a href="https://t.me/+-_FpIECleLtlOWZi" target="_blank">🔗 Sponsor Channel 3</a>
+        <h2>Для отримання доступу необхідно зробити ставку на бій</h2>
+        <a href="https://t.me/+aEuhqU5jZnhiZDc6" target="_blank">🔗 Підписатися на канал спонсора</a>
+        <div class="trust-signals" style="margin-top:20px; font-size:0.9rem; color:#0ff; display:flex; flex-direction:column; gap:8px;">
+          <span>🔒 Безпечні та швидкі платежі</span>
+          <span>💯 Гарантія виплат</span>
+          <span>⭐ Рейтинг 4.8/5 серед користувачів</span>
+        </div>
       </div>
     </div>
-  </div>
-  <script>
-    // Countdown timer
-    const timerEl = document.getElementById('timer');
-    let seconds = Math.floor(Math.random() * 86400);
-    function updateTimer() {
-      if (seconds <= 0) return;
-      const h = String(Math.floor(seconds / 3600)).padStart(2,'0');
-      const m = String(Math.floor((seconds % 3600) / 60)).padStart(2,'0');
-      const s = String(seconds % 60).padStart(2,'0');
-      timerEl.textContent = `${h}:${m}:${s}`;
-      seconds--;
-    }
-    setInterval(updateTimer, 1000);
-    updateTimer();
-    // Modal open/close
-    document.getElementById('playBtn').addEventListener('click', () => {
-      document.getElementById('modal').classList.add('show');
-    });
-    document.getElementById('closeModal').addEventListener('click', () => {
-      document.getElementById('modal').classList.remove('show');
-    });
-  </script>
-</body>
-</html>
