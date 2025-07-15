@@ -14,7 +14,6 @@
       color:#fff; overflow-x:hidden;
     }
     body::after { content:''; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:0; }
-
     .wrapper { position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:40px 20px; text-align:center; }
 
     /* Logos */
@@ -36,7 +35,9 @@
     #countdown { margin:20px auto; font-size:1.2rem; color:#FFD700; animation:fadeInUp 1s ease 1.5s both; }
 
     /* Video Window */
-    .video-window { position:relative; width:90%; max-width:900px; margin:40px auto; background:#000;
+    .video-window { position:relative; width:90%; max-width:900px; margin:40px auto;
+      background: linear-gradient(135deg,#1e3c72,#2a5298); /* unique styled bg */
+      border: 2px solid rgba(255,215,0,0.8);
       border-radius:12px; overflow:hidden; box-shadow:0 8px 16px rgba(0,0,0,0.7); animation:fadeInUp 1s ease 1.7s both;
     }
     .video-window video { width:100%; height:auto; display:block; }
@@ -82,18 +83,20 @@
     <a href="https://gamehub.g2afse.com/click?pid=3751&offer_id=822" class="cta-btn">💰 500 ₴ за ставку</a>
     <p class="small-note">став та перемагай</p>
     <!-- Countdown -->
-    <div id="countdown">Доступ обмежений на: <span id="timer">24:00:00</span></div>
+    <div id="countdown">Пропозиція діє: <span id="timer">24:00:00</span></div>
+
     <!-- Video Playback Window -->
     <div class="video-window">
       <video id="videoElm" controls muted>
         <source src="" type="video/mp4">
-        Ваш браузер не підтримує відтворення відео.
+        Ваш браузер не підтримує відео.
       </video>
       <div class="video-overlay" id="videoOverlay">
         <div class="play-icon" id="playBtn">▶️</div>
       </div>
     </div>
-    <p class="note">Натисніть ▶️, щоб підписатися на спонсорів і розблокувати відео!</p>
+    <!-- Note under video -->
+    <p class="note">для отримання доступу натисніть «▶️»</p>
     <!-- Subscription Modal -->
     <div class="modal-bg" id="modal">
       <div class="modal">
