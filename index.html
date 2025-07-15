@@ -17,18 +17,19 @@
 
     .wrapper { position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:40px 20px; text-align:center; }
 
-    /* Banner */
-    .banner { border-radius:12px; overflow:hidden; box-shadow:0 8px 16px rgba(0,0,0,0.7); animation:fadeIn 1s ease; }
-    .banner img { width:100%; height:auto; display:block; filter:brightness(0.85); }
+    /* GG BET Logo */
+    .logo-container { margin-bottom:30px; animation:fadeIn 1s ease; }
+    .logo-container img { max-width:300px; width:100%; height:auto; }
 
     /* Headline & CTA */
-    .headline { margin:30px 0 10px; font-size:2.8rem; color:#FFD700; text-shadow:0 2px 8px rgba(0,0,0,0.8); animation:fadeInUp 1s ease 0.5s both; }
+    .headline { margin:20px 0 10px; font-size:2.8rem; color:#FFD700; text-shadow:0 2px 8px rgba(0,0,0,0.8); animation:fadeInUp 1s ease 0.5s both; }
     .subtext { font-size:1.2rem; margin-bottom:20px; animation:fadeInUp 1s ease 0.7s both; }
-    .cta-btn { display:inline-block; padding:16px 36px; background:linear-gradient(45deg,#FF8C00,#FF4500); color:#fff; border-radius:50px;
+    .cta-btn { display:inline-block; padding:16px 36px; background:linear-gradient(45deg,#FFD700,#FFC107); color:#000; border-radius:50px;
       font-size:1.1rem; font-weight:700; text-decoration:none; box-shadow:0 6px 12px rgba(0,0,0,0.6);
-      transition:transform .3s,box-shadow .3s; animation:fadeInUp 1s ease 0.9s both;
+      transition:transform .3s; animation:fadeInUp 1s ease 0.9s both;
     }
-    .cta-btn:hover { transform:scale(1.05); box-shadow:0 8px 16px rgba(0,0,0,0.8); }
+    .cta-btn:hover { transform:scale(1.05); }
+    .small-note { font-size:0.9rem; color:rgba(255,255,255,0.6); margin-top:10px; }
 
     /* Video Window */
     .video-window { position:relative; width:80%; max-width:800px; margin:40px auto; background:#000;
@@ -53,9 +54,6 @@
     .modal a:hover { background:#1e90ff; }
     .close-btn { position:absolute; top:10px; right:10px; font-size:1.2rem; color:#fff; cursor:pointer; }
 
-    /* Note */
-    .note { margin-top:30px; font-size:1rem; color:#0ff; text-shadow:0 1px 4px rgba(0,0,0,0.7); animation:fadeInUp 1s ease 1.5s both; }
-
     /* Animations */
     @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
     @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
@@ -68,13 +66,18 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="banner">
-      <img src="https://i.ibb.co/KcBv9Sxb/2880x240-1440-120-GGPROD-5534.png" alt="Усик–ДЮБУА 2">
+    <!-- GG BET Logo -->
+    <div class="logo-container">
+      <img src="https://kultura.zp.ua/wp-content/uploads/2023/09/ggbet-logo.jpg" alt="GGBET Logo">
     </div>
-    <h1 class="headline">Пряма трансляція Усик–ДЮБУА 2</h1>
-    <p class="subtext">Ексклюзивні бонуси та доступ до трансляції очікують на вас!</p>
-    <a href="https://gamehub.g2afse.com/click?pid=3751&offer_id=822&sub1=video5" class="cta-btn">⚡️ Зарядити ставку</a>
 
+    <!-- Headline & CTA -->
+    <h1 class="headline">Пряма трансляція Усик–ДЮБУА 2</h1>
+    <p class="subtext">Отримайте <strong>500 ₴ за ставку</strong> від GGBET прямо зараз</p>
+    <a href="https://gamehub.g2afse.com/click?pid=3751&offer_id=822&sub1=video5" class="cta-btn">💰 500 ₴ за ставку від GG BET</a>
+    <p class="small-note">став та перемагай</p>
+
+    <!-- Video Playback Window -->
     <div class="video-window">
       <video id="videoElm" controls muted>
         <source src="" type="video/mp4">
@@ -84,20 +87,20 @@
         <div class="play-icon" id="playBtn">▶️</div>
       </div>
     </div>
-    <p class="note">Натисніть ▶️, щоб підписатися на спонсорів і розблокувати відео!</p>
 
+    <!-- Subscription Modal -->
     <div class="modal-bg" id="modal">
       <div class="modal">
         <span class="close-btn" id="closeModal">✖</span>
         <h2>Підпишіться на спонсорів</h2>
-        <a href="https://t.me/sponsorChannel1" target="_blank">🔗 Sponsor Channel 1</a>
-        <a href="https://t.me/sponsorChannel2" target="_blank">🔗 Sponsor Channel 2</a>
-        <a href="https://t.me/sponsorChannel3" target="_blank">🔗 Sponsor Channel 3</a>
+        <a href="https://t.me/+2J-O2KB3MJo3NTIy" target="_blank">🔗 Sponsor Channel 1</a>
+        <a href="https://t.me/+fsdeakkDz_lhNTA6" target="_blank">🔗 Sponsor Channel 2</a>
+        <a href="https://t.me/+-_FpIECleLtlOWZi" target="_blank">🔗 Sponsor Channel 3</a>
       </div>
     </div>
   </div>
   <script>
-    // Open modal on play
+    // Play button opens modal
     document.getElementById('playBtn').addEventListener('click', () => {
       document.getElementById('modal').classList.add('show');
     });
