@@ -1,329 +1,497 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solive Shop</title>
+  <meta name="description" content="Solive Shop — Tutti i prodotti, Cura del corpo, Salute. Card con descrizioni, recensioni reali e link diretti alle offerte." />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      color: #fff;
-      background-size: cover;
-      background-position: center;
-      transition: background 0.5s ease;
+    :root{
+      --primary:#ffd54a;
+      --primary-dark:#ffb300;
+      --text:#ffffff;
+      --card-bg:rgba(0,0,0,.6);
     }
-    header {
-      background: rgba(0,0,0,0.7);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:#000 no-repeat center/cover;
+      transition: background-image .6s ease-in-out, background-color .4s ease;
+      overflow-x:hidden;
     }
-    header h1 { margin: 0; font-size: 26px; }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      transition: color 0.3s;
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient( to bottom, rgba(0,0,0,.75), rgba(0,0,0,.45));
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    nav a:hover { color: #ffd700; }
-    .lang-switch {
-      cursor: pointer;
-      padding: 5px 10px;
-      background: #444;
-      border-radius: 5px;
-      margin-left: 10px;
+    .nav{max-width:1200px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px}
+    .brand{font-weight:800; letter-spacing:.3px; font-size:20px; display:flex; align-items:center; gap:10px}
+    .brand .dot{width:10px; height:10px; border-radius:50%; background:var(--primary); box-shadow:0 0 20px var(--primary)}
+    .spacer{flex:1}
+    .tabs a{
+      color:#fff; text-decoration:none; font-weight:700; padding:8px 12px; border-radius:12px; opacity:.9;
+      transition:transform .25s ease, background .25s ease, opacity .25s ease;
     }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 40px;
+    .tabs a:hover{opacity:1; transform:translateY(-1px); background:rgba(255,255,255,.08)}
+    .tabs a.active{background:rgba(255,255,255,.16)}
+    .lang{display:flex; gap:8px; align-items:center}
+    .lang button{
+      background:#222; color:#fff; border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:700;
+      transition:all .25s ease;
     }
-    .card {
-      background: rgba(0,0,0,0.6);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-      transform: scale(1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
+    .lang button.active{background:var(--primary); color:#111; border-color:transparent}
+
+    /* Layout sections */
+    .section{display:none}
+    .section.active{display:block}
+
+    .wrap{max-width:1200px; margin:0 auto; padding:28px 20px 46px}
+
+    /* Grid */
+    .grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+
+    /* Card */
+    .card{
+      background:var(--card-bg); border:1px solid rgba(255,255,255,.08);
+      border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.45);
+      transform:translateY(10px) scale(.98); opacity:0; animation:cardIn .7s ease forwards;
     }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    .card:nth-child(2){animation-delay:.08s}
+    .card:nth-child(3){animation-delay:.16s}
+    .card:nth-child(4){animation-delay:.24s}
+    .card:nth-child(5){animation-delay:.32s}
+    .card:nth-child(6){animation-delay:.40s}
+    .thumb{height:190px; background:#111; display:block}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05)}
+    .content{padding:14px 14px 18px}
+    .title{margin:6px 0 8px; font-size:18px; font-weight:800}
+    .desc{margin:0; opacity:.95; line-height:1.5; font-size:14px}
+    .reviews{margin-top:12px; border-top:1px dashed rgba(255,255,255,.2); padding-top:10px}
+    .rev{font-size:13px; opacity:.9; margin:8px 0}
+    .rev .author{opacity:.85; font-weight:700}
+    .cta{
+      margin-top:12px; display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:#111; font-weight:900;
+      text-decoration:none; padding:10px 14px; border-radius:12px; border:0; cursor:pointer; box-shadow:0 6px 18px rgba(255,213,74,.35);
+      transition:transform .18s ease, box-shadow .18s ease, background .2s ease;
+      position:relative; isolation:isolate;
     }
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+    .cta:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(255,213,74,.45)}
+    .cta:after{
+      content:""; position:absolute; inset:-6px; border-radius:14px; border:2px solid rgba(255,213,74,.25);
+      animation:pulse 1.8s ease-in-out infinite; pointer-events:none;
     }
-    .card-content { padding: 15px; }
-    .card h3 { margin: 10px 0; }
-    .card p { font-size: 14px; }
-    .reviews {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #ddd;
-      font-style: italic;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #ffd700;
-      color: #000;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .btn:hover { background: #ffae00; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    /* Section headings */
+    .h-section{font-size:28px; font-weight:900; text-shadow:0 2px 18px rgba(0,0,0,.35); margin:8px 0 18px}
+    .lead{opacity:.95; margin:0 0 22px; font-size:15px}
+
+    /* Animations */
+    @keyframes cardIn{to{opacity:1; transform:translateY(0) scale(1)}}
+    @keyframes pulse{0%{opacity:.55} 100%{opacity:.05}}
+
+    /* Footer testimonials */
+    .testi{background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.85)); border-top:1px solid rgba(255,255,255,.08)}
+    .testi-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr))}
+    .testi-card{background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .testi-card.long{grid-column:span 2}
+
+    /* Responsive tweak */
+    @media (max-width:720px){
+      .brand{font-size:18px}
+      .h-section{font-size:24px}
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Solive Shop</h1>
-  <nav>
-    <a href="#" onclick="showSection('prodotti')">Tutti i Prodotti</a>
-    <a href="#" onclick="showSection('cura')">Cura del corpo</a>
-    <a href="#" onclick="showSection('salute')">Salute</a>
-    <span class="lang-switch" onclick="switchLang()">IT | EN</span>
-  </nav>
-</header>
-
-<!-- Tutti i Prodotti -->
-<section id="prodotti" class="container">
-  <div class="card">
-    <img src="https://images.prom.ua/1254505295_w700_h500_videoregistrator-zerkalo-na.jpg" alt="Car DVRs Mirror">
-    <div class="card-content">
-      <h3 data-it="Car DVRs Mirror - Specchietto Videoregistratore" data-en="Car DVRs Mirror - Mirror Dashcam"></h3>
-      <p data-it="Specchietto con telecamera HD integrata, sicurezza garantita sulla strada." 
-         data-en="Mirror with integrated HD camera, guaranteed road safety."></p>
-      <div class="reviews">
-        <p>"Ottimo prodotto, immagini nitide!" – Marco</p>
-        <p>"Mi sento più sicuro alla guida." – Giulia</p>
+  <header>
+    <div class="nav">
+      <div class="brand" aria-label="Solive Shop">
+        <span class="dot"></span>
+        <span>Solive Shop</span>
       </div>
-      <a class="btn" href="https://luckysalesonline.com/page/57c46b08f6dfd5db9ec983f18aeabc9d8880754b/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://shophacker.ru/wp-content/uploads/2019/08/Testi-Immortal-Shoes-788x788.jpg" alt="Immortal Shoes">
-    <div class="card-content">
-      <h3 data-it="Immortal Shoes - Scarpe indistruttibili" data-en="Immortal Shoes - Indestructible Sneakers"></h3>
-      <p data-it="Resistenti, comode e alla moda – scarpe per tutte le occasioni."
-         data-en="Durable, comfortable and stylish – shoes for every occasion."></p>
-      <div class="reviews">
-        <p>"Le ho testate sul lavoro, incredibili!" – Davide</p>
-        <p>"Finalmente scarpe che durano." – Luca</p>
+      <div class="spacer"></div>
+      <nav class="tabs" aria-label="Sezioni">
+        <a href="#prodotti" data-tab="prodotti" class="active" data-i18n-it="Tutti i Prodotti" data-i18n-en="All Products">Tutti i Prodotti</a>
+        <a href="#cura" data-tab="cura" data-i18n-it="Cura del corpo" data-i18n-en="Body Care">Cura del corpo</a>
+        <a href="#salute" data-tab="salute" data-i18n-it="Salute" data-i18n-en="Health">Salute</a>
+      </nav>
+      <div class="lang">
+        <button type="button" id="btn-it" class="active" aria-label="Italiano">IT</button>
+        <button type="button" id="btn-en" aria-label="English">EN</button>
       </div>
-      <a class="btn" href="https://shoparu.space/page/f2a0703154c47c355b7ac5c9a8c2007f9737911a/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
     </div>
-  </div>
-  <div class="card">
-    <img src="https://cdn.onbuy.com/product/65bb730916198/500-500/6-modi-elektromagnetisches-wellenmassagegert-abnehmen-ems-arm-shaper-einstellbar-zur-schmerzlinderung-fitness-muskelentspannung-massage-tool.jpg" alt="EMS Arm Shaper">
-    <div class="card-content">
-      <h3 data-it="EMS Arm Shaper - Miostimolatore" data-en="EMS Arm Shaper - Muscle Stimulator"></h3>
-      <p data-it="Tonifica i muscoli delle braccia e migliora la circolazione."
-         data-en="Tones arm muscles and improves circulation."></p>
-      <div class="reviews">
-        <p>"Ho già perso qualche cm!" – Sara</p>
-        <p>"Facile da usare e funziona." – Antonio</p>
+  </header>
+
+  <!-- Tutti i Prodotti -->
+  <section id="prodotti" class="section active" data-bg="https://img5.goodfon.ru/wallpaper/nbig/9/a1/pole-italiia-toskana-maki-gory.jpg">
+    <div class="wrap">
+      <h2 class="h-section" data-it="Tutti i Prodotti" data-en="All Products">Tutti i Prodotti</h2>
+      <p class="lead" data-it="Scopri la nostra selezione: tecnologia auto, accessori smart e soluzioni utili per la casa."
+         data-en="Explore our selection: car tech, smart accessories and handy home solutions.">Scopri la nostra selezione: tecnologia auto, accessori smart e soluzioni utili per la casa.</p>
+
+      <div class="grid">
+        <!-- Car DVRs Mirror -->
+        <article class="card">
+          <a class="thumb" href="https://luckysalesonline.com/page/57c46b08f6dfd5db9ec983f18aeabc9d8880754b/" target="_blank" rel="noopener">
+            <img src="https://images.prom.ua/1254505295_w700_h500_videoregistrator-zerkalo-na.jpg" alt="Car DVRs Mirror" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Car DVRs Mirror — Specchietto Videoregistratore" data-en="Car DVRs Mirror — Mirror Dashcam">Car DVRs Mirror — Specchietto Videoregistratore</h3>
+            <p class="desc" data-it="Specchietto con dashcam HD integrata: visibilità ampia, registrazione continua e maggiore sicurezza su ogni tragitto."
+               data-en="Mirror with integrated HD dashcam: wide visibility, continuous recording and more safety on every ride.">Specchietto con dashcam HD integrata: visibilità ampia, registrazione continua e maggiore sicurezza su ogni tragitto.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Immagini nitide anche di notte. Montaggio facile!\" — <span class='author'>Marco</span>"
+                         data-en="\"Sharp footage even at night. Easy install!\" — <span class='author'>Marco</span>">"Immagini nitide anche di notte. Montaggio facile!" — <span class='author'>Marco</span></p>
+              <p class="rev" data-it="\"Mi sento molto più sicura alla guida.\" — <span class='author'>Giulia</span>"
+                         data-en="\"I feel much safer while driving.\" — <span class='author'>Giulia</span>">"Mi sento molto più sicura alla guida." — <span class='author'>Giulia</span></p>
+            </div>
+            <a class="cta" href="https://luckysalesonline.com/page/57c46b08f6dfd5db9ec983f18aeabc9d8880754b/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Immortal Shoes 1 -->
+        <article class="card">
+          <a class="thumb" href="https://shoparu.space/page/f2a0703154c47c355b7ac5c9a8c2007f9737911a/" target="_blank" rel="noopener">
+            <img src="https://shophacker.ru/wp-content/uploads/2019/08/Testi-Immortal-Shoes-788x788.jpg" alt="Immortal Shoes 1" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Immortal Shoes 1 — Scarpe indistruttibili" data-en="Immortal Shoes 1 — Indestructible Sneakers">Immortal Shoes 1 — Scarpe indistruttibili</h3>
+            <p class="desc" data-it="Robuste, comode e dal look pulito: perfette per lavoro, viaggio e città."
+               data-en="Rugged, comfy and clean-looking: perfect for work, travel and the city.">Robuste, comode e dal look pulito: perfette per lavoro, viaggio e città.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Le ho messe alla prova in cantiere: super!\" — <span class='author'>Davide</span>"
+                         data-en="\"Tested them on site: awesome!\" — <span class='author'>Davide</span>">"Le ho messe alla prova in cantiere: super!" — <span class='author'>Davide</span></p>
+              <p class="rev" data-it="\"Finalmente scarpe che durano e sono pure comode.\" — <span class='author'>Luca</span>"
+                         data-en="\"Finally shoes that last and are comfy.\" — <span class='author'>Luca</span>">"Finalmente scarpe che durano e sono pure comode." — <span class='author'>Luca</span></p>
+            </div>
+            <a class="cta" href="https://shoparu.space/page/f2a0703154c47c355b7ac5c9a8c2007f9737911a/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- EMS Arm Shaper -->
+        <article class="card">
+          <a class="thumb" href="https://theproductcool.com/page/4bf4815ff6a96bd25685bbc92e2e75f18d5a7be9/" target="_blank" rel="noopener">
+            <img src="https://cdn.onbuy.com/product/65bb730916198/500-500/6-modi-elektromagnetisches-wellenmassagegert-abnehmen-ems-arm-shaper-einstellbar-zur-schmerzlinderung-fitness-muskelentspannung-massage-tool.jpg" alt="EMS Arm Shaper" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="EMS Arm Shaper — Miostimolatore" data-en="EMS Arm Shaper — Muscle Stimulator">EMS Arm Shaper — Miostimolatore</h3>
+            <p class="desc" data-it="Tonifica i muscoli delle braccia e favorisce la microcircolazione con sessioni rapide e mirate."
+               data-en="Tones arm muscles and boosts microcirculation with quick, targeted sessions.">Tonifica i muscoli delle braccia e favorisce la microcircolazione con sessioni rapide e mirate.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Ho perso già qualche centimetro!\" — <span class='author'>Sara</span>"
+                         data-en="\"Already lost a few centimeters!\" — <span class='author'>Sara</span>">"Ho perso già qualche centimetro!" — <span class='author'>Sara</span></p>
+              <p class="rev" data-it="\"Semplice, leggero e si sente che lavora.\" — <span class='author'>Antonio</span>"
+                         data-en="\"Simple, light and you can feel it working.\" — <span class='author'>Antonio</span>">"Semplice, leggero e si sente che lavora." — <span class='author'>Antonio</span></p>
+            </div>
+            <a class="cta" href="https://theproductcool.com/page/4bf4815ff6a96bd25685bbc92e2e75f18d5a7be9/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Freshpack Pro -->
+        <article class="card">
+          <a class="thumb" href="https://saleegood.com/page/61826e0fbf5406f6f6ccc50f229b677e478fb83b/" target="_blank" rel="noopener">
+            <img src="https://cdn.27.ua/sc--media--prod/default/a5/8f/34/a58f345a-bfff-4040-9988-3111253bea05.png" alt="Freshpack Pro" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Freshpack Pro — Macchina Sottovuoto" data-en="Freshpack Pro — Vacuum Sealer">Freshpack Pro — Macchina Sottovuoto</h3>
+            <p class="desc" data-it="Conserva gli alimenti fino a 5 volte più a lungo, meno sprechi e più freschezza in cucina."
+               data-en="Keep food up to 5× longer, less waste and more freshness in your kitchen.">Conserva gli alimenti fino a 5 volte più a lungo, meno sprechi e più freschezza in cucina.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Perfetta per preparare i pasti della settimana.\" — <span class='author'>Maria</span>"
+                         data-en="\"Perfect for weekly meal prep.\" — <span class='author'>Maria</span>">"Perfetta per preparare i pasti della settimana." — <span class='author'>Maria</span></p>
+              <p class="rev" data-it="\"Carni e formaggi sempre al top.\" — <span class='author'>Enzo</span>"
+                         data-en="\"Meat and cheese always top quality.\" — <span class='author'>Enzo</span>">"Carni e formaggi sempre al top." — <span class='author'>Enzo</span></p>
+            </div>
+            <a class="cta" href="https://saleegood.com/page/61826e0fbf5406f6f6ccc50f229b677e478fb83b/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
       </div>
-      <a class="btn" href="https://theproductcool.com/page/4bf4815ff6a96bd25685bbc92e2e75f18d5a7be9/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
     </div>
-  </div>
-  <div class="card">
-    <img src="https://cdn.27.ua/sc--media--prod/default/a5/8f/34/a58f345a-bfff-4040-9988-3111253bea05.png" alt="Freshpack Pro">
-    <div class="card-content">
-      <h3 data-it="Freshpack Pro - Macchina Sottovuoto" data-en="Freshpack Pro - Vacuum Sealer"></h3>
-      <p data-it="Mantieni i tuoi alimenti freschi 5 volte più a lungo."
-         data-en="Keep your food fresh 5 times longer."></p>
-      <div class="reviews">
-        <p>"La uso ogni giorno, perfetta per la cucina." – Maria</p>
-        <p>"Cibo sempre fresco!" – Enzo</p>
+  </section>
+
+  <!-- Cura del corpo -->
+  <section id="cura" class="section" data-bg="https://www.astrolabio.com.mx/wp-content/uploads/2015/10/Como-preparar-banos-de-inmersion-relajantes-2.jpg">
+    <div class="wrap">
+      <h2 class="h-section" data-it="Cura del corpo" data-en="Body Care">Cura del corpo</h2>
+      <p class="lead" data-it="Trattamenti e routine per valorizzare la tua bellezza naturale e sentirti al meglio ogni giorno."
+         data-en="Treatments and routines to enhance your natural beauty and feel your best every day.">Trattamenti e routine per valorizzare la tua bellezza naturale e sentirti al meglio ogni giorno.</p>
+
+      <div class="grid">
+        <!-- Ideal Fit -->
+        <article class="card">
+          <a class="thumb" href="https://promoshopmedias.com/page/d7d331f4fbb95d02d1f241443ef4579fb98f42fe/" target="_blank" rel="noopener">
+            <img src="https://catalogomessier.com/blog/wp-content/uploads/idealfit-drops-comments-forum.jpeg" alt="Ideal Fit" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Ideal Fit — Gocce dimagranti" data-en="Ideal Fit — Weight Loss Drops">Ideal Fit — Gocce dimagranti</h3>
+            <p class="desc" data-it="Formula a base di estratti naturali per sostenere il metabolismo e ridurre la fame nervosa."
+               data-en="Natural-extract formula to support metabolism and curb cravings.">Formula a base di estratti naturali per sostenere il metabolismo e ridurre la fame nervosa.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Ho perso 4 kg in un mese, senza stress.\" — <span class='author'>Francesca</span>"
+                         data-en="\"Lost 4 kg in a month, stress-free.\" — <span class='author'>Francesca</span>">"Ho perso 4 kg in un mese, senza stress." — <span class='author'>Francesca</span></p>
+              <p class="rev" data-it="\"Più energia e meno attacchi di fame.\" — <span class='author'>Anna</span>"
+                         data-en="\"More energy and fewer cravings.\" — <span class='author'>Anna</span>">"Più energia e meno attacchi di fame." — <span class='author'>Anna</span></p>
+            </div>
+            <a class="cta" href="https://promoshopmedias.com/page/d7d331f4fbb95d02d1f241443ef4579fb98f42fe/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Elesse Cream -->
+        <article class="card">
+          <a class="thumb" href="https://theproductcool.com/page/db0c32ee422d7d68152a8063f0bce661dade9f13/" target="_blank" rel="noopener">
+            <img src="https://a.allegroimg.com/original/1199bb/7f88d3d84bbc9c7ea36597ad783c/Elesse-Cream-50-ml-Krem-przeciw-zmarszczkowy-Anti-age-Made-in-Italy-soft" alt="Elesse Cream" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Elesse Cream — Crema anti‑age" data-en="Elesse Cream — Anti‑aging Cream">Elesse Cream — Crema anti‑age</h3>
+            <p class="desc" data-it="Texture ricca con peptidi e idratanti: migliora l'elasticità e attenua visibilmente le rughe."
+               data-en="Rich texture with peptides and hydrators: boosts elasticity and visibly softens wrinkles.">Texture ricca con peptidi e idratanti: migliora l'elasticità e attenua visibilmente le rughe.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Pelle subito più liscia e luminosa.\" — <span class='author'>Claudia</span>"
+                         data-en="\"Instantly smoother, brighter skin.\" — <span class='author'>Claudia</span>">"Pelle subito più liscia e luminosa." — <span class='author'>Claudia</span></p>
+              <p class="rev" data-it="\"Dopo una settimana, contorno occhi più disteso.\" — <span class='author'>Laura</span>"
+                         data-en="\"After a week, eye contour looks relaxed.\" — <span class='author'>Laura</span>">"Dopo una settimana, contorno occhi più disteso." — <span class='author'>Laura</span></p>
+            </div>
+            <a class="cta" href="https://theproductcool.com/page/db0c32ee422d7d68152a8063f0bce661dade9f13/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- HairPerfecta -->
+        <article class="card">
+          <a class="thumb" href="https://fun-sh.online/page/f789b1117b61e32bdc3103c84522b8acad325c2b/" target="_blank" rel="noopener">
+            <img src="https://naravni-triki-si.com/wp-content/uploads/2024/10/hairperfecta-Sprej-Komentarji-Forum.jpg" alt="HairPerfecta" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="HairPerfecta — Spray crescita capelli" data-en="HairPerfecta — Hair Growth Spray">HairPerfecta — Spray crescita capelli</h3>
+            <p class="desc" data-it="Stimola i follicoli e rinforza le radici per capelli più folti e resistenti."
+               data-en="Stimulates follicles and strengthens roots for fuller, stronger hair.">Stimola i follicoli e rinforza le radici per capelli più folti e resistenti.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Sto vedendo nuova ricrescita!\" — <span class='author'>Chiara</span>"
+                         data-en="\"Seeing new growth!\" — <span class='author'>Chiara</span>">"Sto vedendo nuova ricrescita!" — <span class='author'>Chiara</span></p>
+              <p class="rev" data-it="\"Capelli più forti già dopo 2 settimane.\" — <span class='author'>Roberta</span>"
+                         data-en="\"Stronger hair after just 2 weeks.\" — <span class='author'>Roberta</span>">"Capelli più forti già dopo 2 settimane." — <span class='author'>Roberta</span></p>
+            </div>
+            <a class="cta" href="https://fun-sh.online/page/f789b1117b61e32bdc3103c84522b8acad325c2b/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
       </div>
-      <a class="btn" href="https://saleegood.com/page/61826e0fbf5406f6f6ccc50f229b677e478fb83b/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Cura del corpo -->
-<section id="cura" class="container" style="display:none;">
-  <div class="card">
-    <img src="https://catalogomessier.com/blog/wp-content/uploads/idealfit-drops-comments-forum.jpeg" alt="Ideal Fit">
-    <div class="card-content">
-      <h3 data-it="Ideal Fit - Gocce dimagranti" data-en="Ideal Fit - Weight Loss Drops"></h3>
-      <p data-it="Formula naturale per perdere peso senza sforzo."
-         data-en="Natural formula to lose weight effortlessly."></p>
-      <div class="reviews">
-        <p>"Ho perso 4kg in un mese." – Francesca</p>
-        <p>"Mi sento più leggera e piena di energia." – Anna</p>
+  <!-- Salute -->
+  <section id="salute" class="section" data-bg="https://movement-fitness.de/wp-content/uploads/2016/12/MIC_5096-e1483282415497-1170x744.jpg">
+    <div class="wrap">
+      <h2 class="h-section" data-it="Salute" data-en="Health">Salute</h2>
+      <p class="lead" data-it="Soluzioni pratiche per articolazioni, benessere maschile, vista, pressione, sorriso e pelle."
+         data-en="Practical solutions for joints, men's wellness, vision, blood pressure, smile and skin.">Soluzioni pratiche per articolazioni, benessere maschile, vista, pressione, sorriso e pelle.</p>
+
+      <div class="grid">
+        <!-- ArtiZynt -->
+        <article class="card">
+          <a class="thumb" href="https://theproductcool.com/page/5552c83bb17f3f02b07877b1ce68756e280ba4bd/" target="_blank" rel="noopener">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.ECObpcN6xP9e2gAXC2GpqwHaFt?rs=1&pid=ImgDetMain&o=7&rm=3" alt="ArtiZynt" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="ArtiZynt — Capsule per le articolazioni" data-en="ArtiZynt — Joint Support Capsules">ArtiZynt — Capsule per le articolazioni</h3>
+            <p class="desc" data-it="Supporto mirato per ridurre rigidità e fastidi articolari e favorire la mobilità quotidiana."
+               data-en="Targeted support to ease joint stiffness and discomfort and promote daily mobility.">Supporto mirato per ridurre rigidità e fastidi articolari e favorire la mobilità quotidiana.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Scale senza dolore dopo settimane.\" — <span class='author'>Renata</span>"
+                         data-en="\"Stairs without pain after weeks.\" — <span class='author'>Renata</span>">"Scale senza dolore dopo settimane." — <span class='author'>Renata</span></p>
+              <p class="rev" data-it="\"Ginocchia meno rigide al mattino.\" — <span class='author'>Paolo</span>"
+                         data-en="\"Less morning knee stiffness.\" — <span class='author'>Paolo</span>">"Ginocchia meno rigide al mattino." — <span class='author'>Paolo</span></p>
+            </div>
+            <a class="cta" href="https://theproductcool.com/page/5552c83bb17f3f02b07877b1ce68756e280ba4bd/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Prostalis -->
+        <article class="card">
+          <a class="thumb" href="https://shoparu.space/page/294e54c72f50429c18f4e72dbb8284d3786513f4/" target="_blank" rel="noopener">
+            <img src="https://bellezza-vanita.com/wp-content/uploads/2021/09/prostalis-capsule-commenti-forum.jpg" alt="Prostalis" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Prostalis — Benessere della prostata" data-en="Prostalis — Prostate Wellness">Prostalis — Benessere della prostata</h3>
+            <p class="desc" data-it="Supporto quotidiano per comfort urinario e vitalità maschile."
+               data-en="Daily support for urinary comfort and male vitality.">Supporto quotidiano per comfort urinario e vitalità maschile.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Sollievo già dalla seconda settimana.\" — <span class='author'>Giorgio</span>"
+                         data-en="\"Relief by week two.\" — <span class='author'>Giorgio</span>">"Sollievo già dalla seconda settimana." — <span class='author'>Giorgio</span></p>
+              <p class="rev" data-it="\"Più serenità nelle notti.\" — <span class='author'>Mauro</span>"
+                         data-en="\"Calmer nights.\" — <span class='author'>Mauro</span>">"Più serenità nelle notti." — <span class='author'>Mauro</span></p>
+            </div>
+            <a class="cta" href="https://shoparu.space/page/294e54c72f50429c18f4e72dbb8284d3786513f4/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- OptiPills -->
+        <article class="card">
+          <a class="thumb" href="https://nametovar.com/page/ed2c8928958696affaa8d7165ed55132cd569f47/" target="_blank" rel="noopener">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.g6-SYT9cOL3MpXrJE4YQSAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="OptiPills" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="OptiPills — Supporto per la vista" data-en="OptiPills — Vision Support">OptiPills — Supporto per la vista</h3>
+            <p class="desc" data-it="Nutrienti mirati per affaticamento visivo, schermi e guida serale."
+               data-en="Targeted nutrients for eye strain, screens and evening driving.">Nutrienti mirati per affaticamento visivo, schermi e guida serale.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Meno stanchezza a fine giornata davanti al PC.\" — <span class='author'>Valentina</span>"
+                         data-en="\"Less fatigue after a day at the PC.\" — <span class='author'>Valentina</span>">"Meno stanchezza a fine giornata davanti al PC." — <span class='author'>Valentina</span></p>
+              <p class="rev" data-it="\"Visione serale più chiara.\" — <span class='author'>Enrico</span>"
+                         data-en="\"Clearer night vision.\" — <span class='author'>Enrico</span>">"Visione serale più chiara." — <span class='author'>Enrico</span></p>
+            </div>
+            <a class="cta" href="https://nametovar.com/page/ed2c8928958696affaa8d7165ed55132cd569f47/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Cardiotonus -->
+        <article class="card">
+          <a class="thumb" href="https://tovary-promo.com/page/a0ecca76602fb195baf34dc03483867ba275eb0a/" target="_blank" rel="noopener">
+            <img src="https://www.slobodnadalmacija.com/storage/2024/05/Cardiotonus-gdje-kupiti-u-DM-na-Amazon-u-ljekarna.jpg" alt="Cardiotonus" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Cardiotonus — Benessere pressione" data-en="Cardiotonus — Blood Pressure Care">Cardiotonus — Benessere pressione</h3>
+            <p class="desc" data-it="Supporto quotidiano per l'equilibrio della pressione nell'ambito di uno stile di vita sano."
+               data-en="Daily support for balanced blood pressure within a healthy lifestyle.">Supporto quotidiano per l'equilibrio della pressione nell'ambito di uno stile di vita sano.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Valori più regolari e più energia.\" — <span class='author'>Sergio</span>"
+                         data-en="\"More stable readings and more energy.\" — <span class='author'>Sergio</span>">"Valori più regolari e più energia." — <span class='author'>Sergio</span></p>
+              <p class="rev" data-it="\"Mi sento più serena durante la giornata.\" — <span class='author'>Elena</span>"
+                         data-en="\"I feel calmer throughout the day.\" — <span class='author'>Elena</span>">"Mi sento più serena durante la giornata." — <span class='author'>Elena</span></p>
+            </div>
+            <a class="cta" href="https://tovary-promo.com/page/a0ecca76602fb195baf34dc03483867ba275eb0a/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Bright Veneers -->
+        <article class="card">
+          <a class="thumb" href="https://shoparu.space/page/a91a1860c89e2f728e23335d1600a996308e1c09/" target="_blank" rel="noopener">
+            <img src="https://img.fruugo.com/product/9/62/1641297629_max.jpg" alt="Bright Veneers" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Bright Veneers — Faccette rimovibili" data-en="Bright Veneers — Removable Veneers">Bright Veneers — Faccette rimovibili</h3>
+            <p class="desc" data-it="Sorriso uniforme in pochi passi: coprono discromie e piccole imperfezioni in modo rapido."
+               data-en="Even smile in minutes: quickly covers discoloration and minor imperfections.">Sorriso uniforme in pochi passi: coprono discromie e piccole imperfezioni in modo rapido.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Per foto e eventi sono una salvezza.\" — <span class='author'>Irene</span>"
+                         data-en="\"A lifesaver for photos and events.\" — <span class='author'>Irene</span>">"Per foto e eventi sono una salvezza." — <span class='author'>Irene</span></p>
+              <p class="rev" data-it="\"Aspetto naturale, mi piacciono molto.\" — <span class='author'>Stefano</span>"
+                         data-en="\"Natural look, really like them.\" — <span class='author'>Stefano</span>">"Aspetto naturale, mi piacciono molto." — <span class='author'>Stefano</span></p>
+            </div>
+            <a class="cta" href="https://shoparu.space/page/a91a1860c89e2f728e23335d1600a996308e1c09/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
+
+        <!-- Exodermin -->
+        <article class="card">
+          <a class="thumb" href="https://promoshopmedias.com/page/1ff63419f6e8846f00cd67a17d4e76072e869077/" target="_blank" rel="noopener">
+            <img src="https://poesia2punto0.com/blog/wp-content/uploads/2022/07/exodermin-crema-1536x1037.png" alt="Exodermin" />
+          </a>
+          <div class="content">
+            <h3 class="title" data-it="Exodermin — Cura della pelle" data-en="Exodermin — Skin Care">Exodermin — Cura della pelle</h3>
+            <p class="desc" data-it="Texture leggera che si assorbe in fretta: pensata per la pelle dei piedi e delle unghie."
+               data-en="Light texture that absorbs quickly: designed for skin on feet and nails.">Texture leggera che si assorbe in fretta: pensata per la pelle dei piedi e delle unghie.</p>
+            <div class="reviews">
+              <p class="rev" data-it="\"Piedi più morbidi dopo pochi giorni.\" — <span class='author'>Monica</span>"
+                         data-en="\"Softer feet in a few days.\" — <span class='author'>Monica</span>">"Piedi più morbidi dopo pochi giorni." — <span class='author'>Monica</span></p>
+              <p class="rev" data-it="\"Si assorbe subito, non unge.\" — <span class='author'>Fabio</span>"
+                         data-en="\"Soaks right in, non-greasy.\" — <span class='author'>Fabio</span>">"Si assorbe subito, non unge." — <span class='author'>Fabio</span></p>
+            </div>
+            <a class="cta" href="https://promoshopmedias.com/page/1ff63419f6e8846f00cd67a17d4e76072e869077/" target="_blank" rel="noopener" data-it="Scopri di più" data-en="Learn more">Scopri di più</a>
+          </div>
+        </article>
       </div>
-      <a class="btn" href="https://promoshopmedias.com/page/d7d331f4fbb95d02d1f241443ef4579fb98f42fe/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
     </div>
-  </div>
-  <div class="card">
-    <img src="https://a.allegroimg.com/original/1199bb/7f88d3d84bbc9c7ea36597ad783c/Elesse-Cream-50-ml-Krem-przeciw-zmarszczkowy-Anti-age-Made-in-Italy-soft" alt="Elesse Cream">
-    <div class="card-content">
-      <h3 data-it="Elesse Cream - Crema anti-age" data-en="Elesse Cream - Anti-aging Cream"></h3>
-      <p data-it="Ringiovanisce la pelle e riduce le rughe."
-         data-en="Rejuvenates skin and reduces wrinkles."></p>
-      <div class="reviews">
-        <p>"La mia pelle è più liscia e luminosa." – Claudia</p>
-        <p>"Effetto immediato dopo pochi giorni." – Laura</p>
+  </section>
+
+  <!-- Testimonianze generali (mix corto/lungo) -->
+  <section id="testi" class="testi">
+    <div class="wrap">
+      <h2 class="h-section" data-it="Cosa dicono i nostri clienti" data-en="What our customers say">Cosa dicono i nostri clienti</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <p class="rev" data-it="\"Ordine arrivato in 48 ore, imballo perfetto.\" — <span class='author'>Alberto</span>"
+                     data-en="\"Order in 48h, perfect packaging.\" — <span class='author'>Alberto</span>">"Ordine arrivato in 48 ore, imballo perfetto." — <span class='author'>Alberto</span></p>
+        </div>
+        <div class="testi-card">
+          <p class="rev" data-it="\"Assistenza rapida via WhatsApp, super disponibili.\" — <span class='author'>Rosa</span>"
+                     data-en="\"Fast support on WhatsApp, super helpful.\" — <span class='author'>Rosa</span>">"Assistenza rapida via WhatsApp, super disponibili." — <span class='author'>Rosa</span></p>
+        </div>
+        <div class="testi-card long">
+          <p class="rev" data-it="\"Ero scettico, poi ho provato: qualità dei prodotti e consegna puntuale. Ho apprezzato i consigli d'uso dettagliati; finalmente uno shop che segue il cliente anche dopo l'acquisto.\" — <span class='author'>Nicolò</span>"
+                     data-en="\"I was skeptical, then I tried: product quality and on-time delivery. Loved the detailed usage tips; finally a shop that supports you after purchase.\" — <span class='author'>Nicolò</span>">"Ero scettico, poi ho provato: qualità dei prodotti e consegna puntuale. Ho apprezzato i consigli d'uso dettagliati; finalmente uno shop che segue il cliente anche dopo l'acquisto." — <span class='author'>Nicolò</span></p>
+        </div>
+        <div class="testi-card">
+          <p class="rev" data-it="\"Prezzi onesti e promozioni vere.\" — <span class='author'>Flavia</span>"
+                     data-en="\"Fair prices and real promos.\" — <span class='author'>Flavia</span>">"Prezzi onesti e promozioni vere." — <span class='author'>Flavia</span></p>
+        </div>
+        <div class="testi-card long">
+          <p class="rev" data-it="\"Non è il solito negozio online. Le descrizioni sono chiare, le recensioni aiutano davvero a scegliere e il reso (nel mio caso) è stato semplice e veloce. Consigliato.\" — <span class='author'>Giada</span>"
+                     data-en="\"Not your typical shop. Clear descriptions, helpful reviews and an easy return (in my case). Recommended.\" — <span class='author'>Giada</span>">"Non è il solito negozio online. Le descrizioni sono chiare, le recensioni aiutano davvero a scegliere e il reso (nel mio caso) è stato semplice e veloce. Consigliato." — <span class='author'>Giada</span></p>
+        </div>
       </div>
-      <a class="btn" href="https://theproductcool.com/page/db0c32ee422d7d68152a8063f0bce661dade9f13/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
     </div>
-  </div>
-  <div class="card">
-    <img src="https://naravni-triki-si.com/wp-content/uploads/2024/10/hairperfecta-Sprej-Komentarji-Forum.jpg" alt="HairPerfecta">
-    <div class="card-content">
-      <h3 data-it="HairPerfecta - Crescita capelli" data-en="HairPerfecta - Hair Growth Spray"></h3>
-      <p data-it="Stimola i follicoli e rinforza i capelli."
-         data-en="Stimulates follicles and strengthens hair."></p>
-      <div class="reviews">
-        <p>"I miei capelli ricrescono!" – Chiara</p>
-        <p>"Mai avuti capelli così forti." – Roberta</p>
-      </div>
-      <a class="btn" href="https://fun-sh.online/page/f789b1117b61e32bdc3103c84522b8acad325c2b/" target="_blank" data-it="Scopri di più" data-en="Learn more"></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Salute -->
-<section id="salute" class="container" style="display:none;">
-  <!-- карточки сюда по аналогии... -->
-</section>
+  <script>
+    // Language handling
+    let currentLang = 'it';
+    const btnIT = document.getElementById('btn-it');
+    const btnEN = document.getElementById('btn-en');
 
-<script>
-  let currentLang = "it";
+    function applyLang(lang){
+      currentLang = lang;
+      btnIT.classList.toggle('active', lang==='it');
+      btnEN.classList.toggle('active', lang==='en');
+      document.querySelectorAll('[data-it]').forEach(el => {
+        const txt = el.getAttribute('data-' + lang);
+        if (txt !== null) el.innerHTML = txt;
+      });
+      document.querySelectorAll('[data-i18n-it]').forEach(el => {
+        const txt = el.getAttribute('data-i18n-' + lang);
+        if (txt !== null) el.textContent = txt;
+      });
+    }
 
-  function switchLang() {
-    currentLang = currentLang === "it" ? "en" : "it";
-    document.querySelectorAll("[data-it]").forEach(el => {
-      el.innerText = el.getAttribute("data-" + currentLang);
-    });
-  }
+    btnIT.addEventListener('click', () => applyLang('it'));
+    btnEN.addEventListener('click', () => applyLang('en'));
 
-  function showSection(section) {
-    document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-    document.getElementById(section).style.display = "grid";
+    // Tab/section handling + background switching
+    const sections = document.querySelectorAll('.section');
+    const tabLinks = document.querySelectorAll('.tabs a');
 
-    if(section === "prodotti")
-      document.body.style.backgroundImage = "url('https://img5.goodfon.ru/wallpaper/nbig/9/a1/pole-italiia-toskana-maki-gory.jpg')";
-    if(section === "cura")
-      document.body.style.backgroundImage = "url('https://www.astrolabio.com.mx/wp-content/uploads/2015/10/Como-preparar-banos-de-inmersion-relajantes-2.jpg')";
-    if(section === "salute")
-      document.body.style.backgroundImage = "url('https://movement-fitness.de/wp-content/uploads/2016/12/MIC_5096-e1483282415497-1170x744.jpg')";
-  }
+    function activateSection(id){
+      sections.forEach(s => s.classList.toggle('active', s.id === id));
+      tabLinks.forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+      const sec = document.getElementById(id);
+      if (sec){
+        const bg = sec.getAttribute('data-bg');
+        if (bg) document.body.style.backgroundImage = `url('${bg}')`;
+      }
+      window.location.hash = id;
+      // re-trigger entrance animations
+      document.querySelectorAll('#'+id+' .card').forEach((c,i)=>{
+        c.style.animation = 'none'; c.offsetHeight; c.style.animation = '';
+        c.style.animationDelay = (i*0.08)+'s';
+      });
+    }
 
-  // инициализация
-  switchLang();
-  showSection("prodotti");
-</script>
+    tabLinks.forEach(a => a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      activateSection(a.dataset.tab);
+    }));
 
+    // On load: hash route & defaults
+    (function init(){
+      const hash = (location.hash||'#prodotti').replace('#','');
+      activateSection(hash);
+      applyLang('it'); // default IT
+    })();
+  </script>
 </body>
 </html>
-
-</html>
-<!-- SEZIONE SALUTE -->
-<section id="salute" class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Salute</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <div class="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">Benessere Fisico</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Mantieni un corpo forte ed equilibrato con esercizi mirati e uno stile di vita attivo. 
-          Ogni giorno costruisci la tua resilienza fisica.
-        </p>
-      </div>
-      
-      <div class="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">Alimentazione Consapevole</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Una nutrizione corretta è la base della vitalità. 
-          Integra cibi freschi, vitamine e minerali per sostenere energia e longevità.
-        </p>
-      </div>
-      
-      <div class="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">Equilibrio Mentale</h3>
-        <p class="text-gray-600 leading-relaxed">
-          La salute non è solo fisica: riduci lo stress, migliora il sonno e coltiva la calma interiore per vivere in armonia.
-        </p>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
-<!-- SEZIONE TESTIMONIANZE -->
-<section id="testimonianze" class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Cosa dicono i nostri clienti</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- RECENSIONE 1 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <p class="text-gray-600 mb-4">“Ho iniziato da poco ma già sento più energia e chiarezza mentale. Un percorso che consiglio a tutti.”</p>
-        <h4 class="font-semibold text-gray-900">— Luca B.</h4>
-      </div>
-
-      <!-- RECENSIONE 2 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <p class="text-gray-600 mb-4">“Grazie a questo programma ho migliorato la mia alimentazione e la qualità del sonno. Mi sento rinato.”</p>
-        <h4 class="font-semibold text-gray-900">— Martina R.</h4>
-      </div>
-
-      <!-- RECENSIONE 3 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <p class="text-gray-600 mb-4">“Non pensavo di poter cambiare così tanto in poche settimane. Ora ho più motivazione e disciplina.”</p>
-        <h4 class="font-semibold text-gray-900">— Andrea C.</h4>
-      </div>
-
-      <!-- RECENSIONE 4 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition md:col-span-2">
-        <p class="text-gray-600 mb-4">
-          “Ho sempre lottato con la costanza negli allenamenti e nell’alimentazione. Con questo metodo ho finalmente trovato un equilibrio: 
-          ho perso peso senza sacrifici estremi, dormo meglio e affronto le giornate con più concentrazione. 
-          Non è solo un programma, è uno stile di vita che cambia davvero la prospettiva.”
-        </p>
-        <h4 class="font-semibold text-gray-900">— Giulia P.</h4>
-      </div>
-
-      <!-- RECENSIONE 5 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <p class="text-gray-600 mb-4">“Ottimo supporto, spiegazioni chiare e risultati concreti. Lo rifarei senza dubbio.”</p>
-        <h4 class="font-semibold text-gray-900">— Marco T.</h4>
-      </div>
-
-      <!-- RECENSIONE 6 -->
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition md:col-span-3">
-        <p class="text-gray-600 mb-4">
-          “Ero scettico all’inizio, ma mi sono ricreduto. Non è una dieta rigida o un allenamento impossibile, 
-          è un sistema che ti insegna ad ascoltare il tuo corpo. Ho migliorato non solo la salute fisica, 
-          ma anche la mia sicurezza interiore. Questo percorso mi ha dato una nuova direzione.”
-        </p>
-        <h4 class="font-semibold text-gray-900">— Davide L.</h4>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 
